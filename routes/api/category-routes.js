@@ -36,6 +36,10 @@ router.get('/:id', async (req, res) => {
   })
     .then((category) => {
       res.json(category);
+       if (!category) {
+        res.status(404).json({ message: "No category found!" });
+        return;
+      }
     })
     .catch((err) => {
       console.log(err);
